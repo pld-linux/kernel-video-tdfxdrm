@@ -81,5 +81,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n kernel-smp-video-tdfxdrm
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README.drm
 /lib/modules/%{_kernel_ver}smp/misc/*
