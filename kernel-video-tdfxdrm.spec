@@ -60,8 +60,6 @@ install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc
 install tdfx.o-smp $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/tdfx.o
 install tdfx.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/tdfx.o
 
-gzip -9nf README.drm
-
 %clean 
 rm -rf $RPM_BUILD_ROOT
 
@@ -79,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README.drm
 /lib/modules/%{_kernel_ver}/misc/*
 
 %files -n kernel-smp-video-tdfxdrm
