@@ -2,7 +2,7 @@
 # conditional build
 # _without_dist_kernel          without distribution kernel
 
-%define		_rel 5
+%define		_rel 6
 
 Summary:	TDFX DRM Driver
 Summary(pl):	Sterownik DRM do kart 3Dfx
