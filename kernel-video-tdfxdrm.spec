@@ -54,8 +54,8 @@ mv -f tdfx.o tdfx.o-smp
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc
+install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/misc
+
 install tdfx.o-smp $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/tdfx.o
 install tdfx.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/tdfx.o
 
