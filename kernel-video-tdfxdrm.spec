@@ -1,6 +1,7 @@
-# conditional build
+#
+# Conditional build:
 # _without_dist_kernel          without distribution kernel
-
+#
 Summary:	TDFX DRM Driver
 Summary(pl):	Sterownik DRM do kart 3Dfx
 Name:		kernel-video-tdfxdrm
@@ -12,8 +13,8 @@ Group:		Base/Kernel
 Source0:	tdfxdrm.tgz
 %{!?_without_dist_kernel:BuildRequires:         kernel-headers < 2.4.0 }
 BuildRequires:	%{kgcc_package}
-PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
+Requires(post,postun):	/sbin/depmod
 Obsoletes:	tdfxdrm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,8 +31,8 @@ Summary:	TDFX DRM Driver
 Summary(pl):	Sterownik DRM do kart 3Dfx
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_smp}
+Requires(post,postun):	/sbin/depmod
 Obsoletes:	tdfxdrm
 
 %description -n kernel-smp-video-tdfxdrm
@@ -62,16 +63,16 @@ install tdfx.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/tdfx.o
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/depmod -a
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver} %{_kernel_ver}
 
 %postun
-/sbin/depmod -a
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver} %{_kernel_ver}
 
-%post -n kernel-smp-video-tdfxdrm
-/sbin/depmod -a
+%post	-n kernel-smp-video-tdfxdrm
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver}smp %{_kernel_ver}smp
 
 %postun -n kernel-smp-video-tdfxdrm
-/sbin/depmod -a
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver}smp %{_kernel_ver}smp
 
 %files
 %defattr(644,root,root,755)
