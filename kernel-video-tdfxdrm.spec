@@ -4,7 +4,7 @@
 
 %define		_kernel_ver	%(grep UTS_RELEASE %{_kernelsrcdir}/include/linux/version.h 2>/dev/null | cut -d'"' -f2)
 %define		_kernel_ver_str	%(echo %{_kernel_ver} | sed s/-/_/g)
-%define		_rel 2
+%define		_rel 3
 
 Summary:	TDFX DRM Driver
 Summary(pl):	Sterownik DRM do kart 3Dfx
@@ -16,8 +16,7 @@ Group:		Base/Kernel
 Source0:	tdfxdrm.tgz
 %{!?_without_dist_kernel:BuildRequires:         kernel-headers < 2.4.0 }
 PreReq:		/sbin/depmod
-%{!?_without_dist_kernel:Conflicts:	kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
-%{!?_without_dist_kernel:Conflicts:	kernel-smp}
+%{!?_without_dist_kernel:Requires:	kernel-up = %{_kernel_ver}}
 Obsoletes:	tdfxdrm
 Obsoletes:	kernel-smp-video-tdfxdrm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,8 +33,7 @@ DRM (Direct Rendering Manager).
 Summary:	TDFX DRM Driver
 Summary(pl):	Sterownik DRM do kart 3Dfx
 Release:	%{_rel}@%{_kernel_ver_str}
-%{!?_without_dist_kernel:Conflicts:     kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
-%{!?_without_dist_kernel:Conflicts:     kernel-up}
+%{!?_without_dist_kernel:Requires:     kernel-smp = %{_kernel_ver}}
 Obsoletes:	kernel-video-tdfxdrm
 Obsoletes:	tdfxdrm
 PreReq:		/sbin/depmod
