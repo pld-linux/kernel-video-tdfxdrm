@@ -16,6 +16,8 @@ BuildRequires:	%{kgcc_package}
 PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
 Obsoletes:	tdfxdrm
+# version 1.0 supports only i386/alpha on 2.2 kernel
+ExclusiveArch:	%{ix86} alpha
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
