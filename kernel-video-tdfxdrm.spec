@@ -6,21 +6,31 @@
 %define		_kernel_ver_str	%(echo %{_kernel_ver} | sed s/-/_/g)
 %define		_rel 2
 
-Summary:        TDFX DRM Driver
-Summary(pl):    Sterownik DRM do kart 3Dfx
+Summary:	TDFX DRM Driver
+Summary(pl):	Sterownik DRM do kart 3Dfx
 Name:		kernel-video-tdfxdrm
 Version:	1.0
 Release:	%{_rel}@%{_kernel_ver_str}
-License:        MIT
+License:	MIT
 Group:		Base/Kernel
+Group(cs):	Základ/Jádro
+Group(da):	Basal/Kerne
 Group(de):	Grundsätzlich/Kern
+Group(es):	Base/Núcleo
+Group(fr):	Base/Noyau
+Group(it):	Base/Kernel
+Group(ja):	¥Ù¡¼¥¹/¥«¡¼¥Í¥ë
+Group(no):	Basis/Kjerne
 Group(pl):	Podstawowe/J±dro
-Source0:        tdfxdrm.tgz
+Group(pt):	Base/Núcleo
+Group(ru):	âÁÚÏ×ÙÊ ÎÁÂÏÒ/ñÄÒÏ
+Group(sv):	Bas/Kärna
+Source0:	tdfxdrm.tgz
 %{!?_without_dist_kernel:BuildRequires:         kernel-headers < 2.4.0 }
 PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:Conflicts:	kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
 %{!?_without_dist_kernel:Conflicts:	kernel-smp}
-Obsoletes:      tdfxdrm
+Obsoletes:	tdfxdrm
 Obsoletes:	kernel-smp-video-tdfxdrm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,21 +43,31 @@ Ten pakiet zawiera sterowniki który pozwala na u¿ywanie sprzêtu 3dfx z
 DRM (Direct Rendering Manager).
 
 %package -n kernel-smp-video-tdfxdrm
-Summary:        TDFX DRM Driver
-Summary(pl):    Sterownik DRM do kart 3Dfx
-Release:        %{_rel}@%{_kernel_ver_str}
+Summary:	TDFX DRM Driver
+Summary(pl):	Sterownik DRM do kart 3Dfx
+Release:	%{_rel}@%{_kernel_ver_str}
 %{!?_without_dist_kernel:Conflicts:     kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
 %{!?_without_dist_kernel:Conflicts:     kernel-up}
-Obsoletes: 	kernel-video-tdfxdrm
+Obsoletes:	kernel-video-tdfxdrm
 Obsoletes:	tdfxdrm
-PreReq:         /sbin/depmod
+PreReq:		/sbin/depmod
 Group:		Base/Kernel
+Group(cs):	Základ/Jádro
+Group(da):	Basal/Kerne
 Group(de):	Grundsätzlich/Kern
+Group(es):	Base/Núcleo
+Group(fr):	Base/Noyau
+Group(it):	Base/Kernel
+Group(ja):	¥Ù¡¼¥¹/¥«¡¼¥Í¥ë
+Group(no):	Basis/Kjerne
 Group(pl):	Podstawowe/J±dro
+Group(pt):	Base/Núcleo
+Group(ru):	âÁÚÏ×ÙÊ ÎÁÂÏÒ/ñÄÒÏ
+Group(sv):	Bas/Kärna
 
 %description -n kernel-smp-video-tdfxdrm
-This package provides a device driver for SMP to allow 3dfx hardware to work
-in the direct rendering manager. 
+This package provides a device driver for SMP to allow 3dfx hardware
+to work in the direct rendering manager.
 
 %description -n kernel-smp-video-tdfxdrm -l pl
 Ten pakiet zawiera sterowniki który pozwala na u¿ywanie sprzêtu 3dfx z
