@@ -15,7 +15,7 @@ License:	MIT
 Group:		Base/Kernel
 Source0:	tdfxdrm.tgz
 %{!?_without_dist_kernel:BuildRequires:         kernel-headers < 2.4.0 }
-BuildRequires:	%{kgcc}
+BuildRequires:	%{kgcc_package}
 PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
 Obsoletes:	tdfxdrm
