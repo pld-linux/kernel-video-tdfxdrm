@@ -5,7 +5,7 @@ Summary:	TDFX DRM Driver
 Summary(pl):	Sterownik DRM do kart 3Dfx
 Name:		kernel-video-tdfxdrm
 Version:	1.0
-%define	_rel	10
+%define	_rel	11
 Release:	%{_rel}@%{_kernel_ver_str}
 License:	MIT
 Group:		Base/Kernel
