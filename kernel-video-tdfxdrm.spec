@@ -22,7 +22,6 @@ PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:Conflicts:	kernel-smp}
 Obsoletes:      tdfxdrm
 Obsoletes:	kernel-smp-video-tdfxdrm
-Exclusivearch:  %{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
