@@ -16,12 +16,13 @@ Group:		Base/Kernel
 Group(de):	Grundsätzlich/Kern
 Group(pl):	Podstawowe/J±dro
 Source0:        tdfxdrm.tgz
-%{!?_without_dist_kernel:BuildRequires:         kernel-headers >= 2.2.0 }
+%{!?_without_dist_kernel:BuildRequires:         kernel-headers < 2.4.0 }
 PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:Conflicts:	kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
 %{!?_without_dist_kernel:Conflicts:	kernel-smp}
 Obsoletes:      tdfxdrm
 Obsoletes:	kernel-smp-video-tdfxdrm
+Exclusivearch:  %{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
