@@ -1,13 +1,12 @@
-
+#
 # conditional build
 # _without_dist_kernel          without distribution kernel
-
-%define		_rel 6
-
+#
 Summary:	TDFX DRM Driver
 Summary(pl):	Sterownik DRM do kart 3Dfx
 Name:		kernel-video-tdfxdrm
 Version:	1.0
+%define	_rel	7
 Release:	%{_rel}@%{_kernel_ver_str}
 License:	MIT
 Group:		Base/Kernel
