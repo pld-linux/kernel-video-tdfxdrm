@@ -2,9 +2,7 @@
 # conditional build
 # _without_dist_kernel          without distribution kernel
 
-%define		_kernel_ver	%(grep UTS_RELEASE %{_kernelsrcdir}/include/linux/version.h 2>/dev/null | cut -d'"' -f2)
-%define		_kernel_ver_str	%(echo %{_kernel_ver} | sed s/-/_/g)
-%define		_rel 4
+%define		_rel 5
 
 Summary:	TDFX DRM Driver
 Summary(pl):	Sterownik DRM do kart 3Dfx
@@ -19,7 +17,6 @@ BuildRequires:	%{kgcc_package}
 PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
 Obsoletes:	tdfxdrm
-Obsoletes:	kernel-smp-video-tdfxdrm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,7 +34,6 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_smp}
-Obsoletes:	kernel-video-tdfxdrm
 Obsoletes:	tdfxdrm
 
 %description -n kernel-smp-video-tdfxdrm
@@ -59,10 +55,10 @@ mv -f tdfx.o tdfx.o-smp
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/video
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/video
-install tdfx.o-smp $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/video/tdfx.o
-install tdfx.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/video/tdfx.o
+install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc
+install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc
+install tdfx.o-smp $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/tdfx.o
+install tdfx.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/tdfx.o
 
 gzip -9nf README.drm
 
@@ -84,9 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc *.gz
-/lib/modules/%{_kernel_ver}/video/*
+/lib/modules/%{_kernel_ver}/misc/*
 
 %files -n kernel-smp-video-tdfxdrm
 %defattr(644,root,root,755)
 %doc *.gz
-/lib/modules/%{_kernel_ver}smp/video/*
+/lib/modules/%{_kernel_ver}smp/misc/*
