@@ -4,7 +4,7 @@
 
 %define		_kernel_ver	%(grep UTS_RELEASE %{_kernelsrcdir}/include/linux/version.h 2>/dev/null | cut -d'"' -f2)
 %define		_kernel_ver_str	%(echo %{_kernel_ver} | sed s/-/_/g)
-%define		_rel 3
+%define		_rel 4
 
 Summary:	TDFX DRM Driver
 Summary(pl):	Sterownik DRM do kart 3Dfx
@@ -15,8 +15,9 @@ License:	MIT
 Group:		Base/Kernel
 Source0:	tdfxdrm.tgz
 %{!?_without_dist_kernel:BuildRequires:         kernel-headers < 2.4.0 }
+BuildRequires:	%{kgcc}
 PreReq:		/sbin/depmod
-%{!?_without_dist_kernel:Requires:	kernel-up = %{_kernel_ver}}
+%{!?_without_dist_kernel:%requires_releq_kernel_up}
 Obsoletes:	tdfxdrm
 Obsoletes:	kernel-smp-video-tdfxdrm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -33,11 +34,11 @@ DRM (Direct Rendering Manager).
 Summary:	TDFX DRM Driver
 Summary(pl):	Sterownik DRM do kart 3Dfx
 Release:	%{_rel}@%{_kernel_ver_str}
-%{!?_without_dist_kernel:Requires:     kernel-smp = %{_kernel_ver}}
+Group:		Base/Kernel
+PreReq:		/sbin/depmod
+%{!?_without_dist_kernel:%requires_releq_kernel_smp}
 Obsoletes:	kernel-video-tdfxdrm
 Obsoletes:	tdfxdrm
-PreReq:		/sbin/depmod
-Group:		Base/Kernel
 
 %description -n kernel-smp-video-tdfxdrm
 This package provides a device driver for SMP to allow 3dfx hardware
@@ -51,10 +52,10 @@ DRM (Direct Rendering Manager) w systemach SMP
 %setup -q -c
 
 %build
-%{__make} -f Makefile.linux tdfx.o AGP=1 SMP=1 CC="kgcc -DCONFIG_X86_LOCAL_APIC"
-mv tdfx.o tdfx.o-smp
+%{__make} -f Makefile.linux tdfx.o AGP=1 SMP=1 CC="%{kgcc} -DCONFIG_X86_LOCAL_APIC"
+mv -f tdfx.o tdfx.o-smp
 %{__make} -f Makefile.linux clean
-%{__make} -f Makefile.linux tdfx.o AGP=1 CC="kgcc"
+%{__make} -f Makefile.linux tdfx.o AGP=1 CC="%{kgcc}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
