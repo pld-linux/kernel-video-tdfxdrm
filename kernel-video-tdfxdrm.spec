@@ -13,18 +13,6 @@ Version:	1.0
 Release:	%{_rel}@%{_kernel_ver_str}
 License:	MIT
 Group:		Base/Kernel
-Group(cs):	Základ/Jádro
-Group(da):	Basal/Kerne
-Group(de):	Grundsätzlich/Kern
-Group(es):	Base/Núcleo
-Group(fr):	Base/Noyau
-Group(it):	Base/Kernel
-Group(ja):	¥Ù¡¼¥¹/¥«¡¼¥Í¥ë
-Group(no):	Basis/Kjerne
-Group(pl):	Podstawowe/J±dro
-Group(pt):	Base/Núcleo
-Group(ru):	âÁÚÏ×ÙÊ ÎÁÂÏÒ/ñÄÒÏ
-Group(sv):	Bas/Kärna
 Source0:	tdfxdrm.tgz
 %{!?_without_dist_kernel:BuildRequires:         kernel-headers < 2.4.0 }
 PreReq:		/sbin/depmod
@@ -52,18 +40,6 @@ Obsoletes:	kernel-video-tdfxdrm
 Obsoletes:	tdfxdrm
 PreReq:		/sbin/depmod
 Group:		Base/Kernel
-Group(cs):	Základ/Jádro
-Group(da):	Basal/Kerne
-Group(de):	Grundsätzlich/Kern
-Group(es):	Base/Núcleo
-Group(fr):	Base/Noyau
-Group(it):	Base/Kernel
-Group(ja):	¥Ù¡¼¥¹/¥«¡¼¥Í¥ë
-Group(no):	Basis/Kjerne
-Group(pl):	Podstawowe/J±dro
-Group(pt):	Base/Núcleo
-Group(ru):	âÁÚÏ×ÙÊ ÎÁÂÏÒ/ñÄÒÏ
-Group(sv):	Bas/Kärna
 
 %description -n kernel-smp-video-tdfxdrm
 This package provides a device driver for SMP to allow 3dfx hardware
