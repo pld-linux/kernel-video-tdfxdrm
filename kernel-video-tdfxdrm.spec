@@ -12,7 +12,7 @@ License:	MIT
 Group:		Base/Kernel
 Source0:	tdfxdrm.tgz
 # Source0-md5:	2fe84a3502bef8bb4f04756786b392ba
-%{!?_without_dist_kernel:BuildRequires:         kernel-headers < 2.4.0 }
+%{!?_without_dist_kernel:BuildRequires:	kernel-headers < 2.4.0 }
 BuildRequires:	%{kgcc_package}
 BuildRequires:	rpmbuild(macros) >= 1.118
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
@@ -61,7 +61,7 @@ install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/misc
 install tdfx.o-smp $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/tdfx.o
 install tdfx.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/tdfx.o
 
-%clean 
+%clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
