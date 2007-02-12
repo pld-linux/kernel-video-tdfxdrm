@@ -3,7 +3,7 @@
 %bcond_without	dist_kernel		# without distribution kernel
 #
 Summary:	TDFX DRM Driver
-Summary(pl):	Sterownik DRM do kart 3Dfx
+Summary(pl.UTF-8):   Sterownik DRM do kart 3Dfx
 Name:		kernel-video-tdfxdrm
 Version:	1.0
 %define	_rel	10
@@ -24,13 +24,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This package provides a device driver to allow 3dfx hardware to work
 in the direct rendering manager.
 
-%description -l pl
-Ten pakiet zawiera sterowniki który pozwala na u¿ywanie sprzêtu 3dfx z
+%description -l pl.UTF-8
+Ten pakiet zawiera sterowniki ktÃ³ry pozwala na uÅ¼ywanie sprzÄ™tu 3dfx z
 DRM (Direct Rendering Manager).
 
 %package -n kernel-smp-video-tdfxdrm
 Summary:	TDFX DRM Driver
-Summary(pl):	Sterownik DRM do kart 3Dfx
+Summary(pl.UTF-8):   Sterownik DRM do kart 3Dfx
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{?with_dist_kernel:%requires_releq_kernel_smp}
@@ -41,8 +41,8 @@ Obsoletes:	tdfxdrm
 This package provides a device driver for SMP to allow 3dfx hardware
 to work in the direct rendering manager.
 
-%description -n kernel-smp-video-tdfxdrm -l pl
-Ten pakiet zawiera sterowniki który pozwala na u¿ywanie sprzêtu 3dfx z
+%description -n kernel-smp-video-tdfxdrm -l pl.UTF-8
+Ten pakiet zawiera sterowniki ktÃ³ry pozwala na uÅ¼ywanie sprzÄ™tu 3dfx z
 DRM (Direct Rendering Manager) w systemach SMP
 
 %prep
